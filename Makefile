@@ -1,6 +1,6 @@
 GPU=0
 CUDNN=0
-OPENCV=0
+OPENCV=1
 DEBUG=0
 
 ARCH= -gencode arch=compute_20,code=[sm_20,sm_21] \
@@ -32,8 +32,8 @@ CFLAGS+=$(OPTS)
 ifeq ($(OPENCV), 1) 
 COMMON+= -DOPENCV
 CFLAGS+= -DOPENCV
-LDFLAGS+= `pkg-config --libs opencv` 
-COMMON+= `pkg-config --cflags opencv` 
+LDFLAGS+= `pkg-config --libs opencv2` 
+COMMON+= `pkg-config --cflags opencv2` 
 endif
 
 ifeq ($(GPU), 1) 
